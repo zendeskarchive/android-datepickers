@@ -110,7 +110,7 @@ public class TimePickerDialog extends DialogFragment implements OnValueSelectedL
     private String mMinutePickerDescription;
     private String mSelectMinutes;
 
-    private Integer mNeutralButtonTextResId;
+    private Integer mAlternateActionTextResId;
 
     /**
      * The callback interface used to indicate the user is done filling in
@@ -125,7 +125,7 @@ public class TimePickerDialog extends DialogFragment implements OnValueSelectedL
          */
         void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute);
 
-        void onNeutralButtonPressed(RadialPickerLayout view, int hourOfDay, int minute);
+        void onAlternateAction(RadialPickerLayout view, int hourOfDay, int minute);
     }
 
     public TimePickerDialog() {
@@ -171,8 +171,8 @@ public class TimePickerDialog extends DialogFragment implements OnValueSelectedL
         mInKbMode = false;
     }
 
-    public void setNeutralButton(int textResId) {
-      mNeutralButtonTextResId = textResId;
+    public void setAlternateAction(int textResId) {
+      mAlternateActionTextResId = textResId;
     }
 
     @Override
@@ -267,18 +267,18 @@ public class TimePickerDialog extends DialogFragment implements OnValueSelectedL
         });
         mDoneButton.setOnKeyListener(keyboardListener);
 
-        if (mNeutralButtonTextResId != null) {
-            TextView neutralButton = (TextView) view.findViewById(R.id.neutral_button);
+        if (mAlternateActionTextResId != null) {
+            TextView alternateActionButton = (TextView) view.findViewById(R.id.alternate_action_button);
 
-            neutralButton.setText(mNeutralButtonTextResId);
-            neutralButton.setVisibility(View.VISIBLE);
+            alternateActionButton.setText(mAlternateActionTextResId);
+            alternateActionButton.setVisibility(View.VISIBLE);
 
-            neutralButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
+            alternateActionButton.setOnClickListener(new OnClickListener() {
+              @Override
+              public void onClick(View v) {
                 if (mCallback != null) {
-                    mCallback.onNeutralButtonPressed(mTimePicker,
-                                mTimePicker.getHours(), mTimePicker.getMinutes());
+                  mCallback.onAlternateAction(mTimePicker,
+                      mTimePicker.getHours(), mTimePicker.getMinutes());
                 }
                 dismiss();
               }

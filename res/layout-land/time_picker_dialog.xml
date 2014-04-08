@@ -52,7 +52,7 @@
             android:showDividers="middle"
             android:divider="@drawable/button_bar_divider">
             <Button
-                android:id="@+id/neutral_button"
+                android:id="@+id/alternate_action_button"
                 android:visibility="gone"
                 android:background="@drawable/done_background_color"
                 android:layout_width="0dp"

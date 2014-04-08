@@ -107,7 +107,7 @@ public class DatePickerDialog extends DialogFragment implements
     private String mSelectDay;
     private String mYearPickerDescription;
     private String mSelectYear;
-    private Integer mNeutralButtonTextResId;
+    private Integer mAlternateActionTextResId;
 
     /**
      * The callback used to indicate the user is done filling in the date.
@@ -123,7 +123,7 @@ public class DatePickerDialog extends DialogFragment implements
          */
         void onDateSet(DatePickerDialog dialog, int year, int monthOfYear, int dayOfMonth);
 
-        void onNeutralButtonPressed(DatePickerDialog dialog, int year, int monthOfYear, int dayOfMonth);
+        void onAlternateAction(DatePickerDialog dialog, int year, int monthOfYear, int dayOfMonth);
     }
 
     /**
@@ -258,18 +258,18 @@ public class DatePickerDialog extends DialogFragment implements
             }
         });
 
-        if (mNeutralButtonTextResId != null) {
-            TextView neutralButton = (TextView) view.findViewById(R.id.neutral_button);
+        if (mAlternateActionTextResId != null) {
+            TextView alternateActionButton = (TextView) view.findViewById(R.id.alternate_action_button);
 
-            neutralButton.setText(mNeutralButtonTextResId);
-            neutralButton.setVisibility(View.VISIBLE);
+            alternateActionButton.setText(mAlternateActionTextResId);
+            alternateActionButton.setVisibility(View.VISIBLE);
 
-            neutralButton.setOnClickListener(new OnClickListener() {
+            alternateActionButton.setOnClickListener(new OnClickListener() {
               @Override
               public void onClick(View v) {
                 if (mCallBack != null) {
-                    mCallBack.onNeutralButtonPressed(DatePickerDialog.this, mCalendar.get(Calendar.YEAR),
-                                mCalendar.get(Calendar.MONTH), mCalendar.get(Calendar.DAY_OF_MONTH));
+                  mCallBack.onAlternateAction(DatePickerDialog.this, mCalendar.get(Calendar.YEAR),
+                      mCalendar.get(Calendar.MONTH), mCalendar.get(Calendar.DAY_OF_MONTH));
                 }
                 dismiss();
               }
@@ -397,8 +397,8 @@ public class DatePickerDialog extends DialogFragment implements
         }
     }
 
-    public void setNeutralButton(int textResId) {
-      mNeutralButtonTextResId = textResId;
+    public void setAlternateAction(int textResId) {
+      mAlternateActionTextResId = textResId;
     }
 
     public void setOnDateSetListener(OnDateSetListener listener) {
