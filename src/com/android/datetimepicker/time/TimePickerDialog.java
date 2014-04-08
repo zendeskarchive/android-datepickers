@@ -111,8 +111,9 @@ public class TimePickerDialog extends DialogFragment implements OnValueSelectedL
     private String mSelectMinutes;
 
     private Integer mAlternateActionTextResId;
+    private int mDoneButtonTextResId = R.string.done_label;
 
-    /**
+  /**
      * The callback interface used to indicate the user is done filling in
      * the time (they clicked on the 'Set' button).
      */
@@ -173,6 +174,10 @@ public class TimePickerDialog extends DialogFragment implements OnValueSelectedL
 
     public void setAlternateAction(int textResId) {
       mAlternateActionTextResId = textResId;
+    }
+
+    public void setDoneButtonTextResId(int textResId) {
+      mDoneButtonTextResId = textResId;
     }
 
     @Override
@@ -250,6 +255,7 @@ public class TimePickerDialog extends DialogFragment implements OnValueSelectedL
         });
 
         mDoneButton = (TextView) view.findViewById(R.id.done_button);
+        mDoneButton.setText(mDoneButtonTextResId);
         mDoneButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {

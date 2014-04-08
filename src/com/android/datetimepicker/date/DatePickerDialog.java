@@ -108,6 +108,7 @@ public class DatePickerDialog extends DialogFragment implements
     private String mYearPickerDescription;
     private String mSelectYear;
     private Integer mAlternateActionTextResId;
+    private int mDoneButtonTextResId = R.string.done_label;
 
     /**
      * The callback used to indicate the user is done filling in the date.
@@ -245,6 +246,7 @@ public class DatePickerDialog extends DialogFragment implements
         mAnimator.setOutAnimation(animation2);
 
         mDoneButton = (Button) view.findViewById(R.id.done);
+        mDoneButton.setText(mDoneButtonTextResId);
         mDoneButton.setOnClickListener(new OnClickListener() {
 
             @Override
@@ -399,6 +401,10 @@ public class DatePickerDialog extends DialogFragment implements
 
     public void setAlternateAction(int textResId) {
       mAlternateActionTextResId = textResId;
+    }
+
+    public void setDoneButtonTextResId(int textResId) {
+      mDoneButtonTextResId = textResId;
     }
 
     public void setOnDateSetListener(OnDateSetListener listener) {
