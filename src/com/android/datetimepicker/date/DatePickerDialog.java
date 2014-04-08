@@ -68,6 +68,7 @@ public class DatePickerDialog extends DialogFragment implements
     private static final String KEY_CURRENT_VIEW = "current_view";
     private static final String KEY_LIST_POSITION_OFFSET = "list_position_offset";
     private static final String KEY_ALTERNATE_ACTION = "alternate_action";
+    private static final String KEY_DONE_BUTTON_TEXT = "done_button_text";
 
     private static final int DEFAULT_START_YEAR = 1900;
     private static final int DEFAULT_END_YEAR = 2100;
@@ -196,6 +197,7 @@ public class DatePickerDialog extends DialogFragment implements
         if (mAlternateActionTextResId != null) {
             outState.putInt(KEY_ALTERNATE_ACTION, mAlternateActionTextResId);
         }
+        outState.putInt(KEY_DONE_BUTTON_TEXT, mDoneButtonTextResId);
     }
 
     @Override
@@ -227,6 +229,7 @@ public class DatePickerDialog extends DialogFragment implements
             if (savedInstanceState.containsKey(KEY_ALTERNATE_ACTION)) {
                 mAlternateActionTextResId = savedInstanceState.getInt(KEY_ALTERNATE_ACTION);
             }
+            mDoneButtonTextResId = savedInstanceState.getInt(KEY_DONE_BUTTON_TEXT);
         }
 
         final Activity activity = getActivity();

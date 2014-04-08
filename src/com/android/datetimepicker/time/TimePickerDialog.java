@@ -58,6 +58,7 @@ public class TimePickerDialog extends DialogFragment implements OnValueSelectedL
     private static final String KEY_TYPED_TIMES = "typed_times";
     private static final String KEY_DARK_THEME = "dark_theme";
     private static final String KEY_ALTERNATE_ACTION = "alternate_action";
+    private static final String KEY_DONE_BUTTON_TEXT = "done_button_text";
 
     public static final int HOUR_INDEX = 0;
     public static final int MINUTE_INDEX = 1;
@@ -196,6 +197,7 @@ public class TimePickerDialog extends DialogFragment implements OnValueSelectedL
             if (savedInstanceState.containsKey(KEY_ALTERNATE_ACTION)) {
                 mAlternateActionTextResId = savedInstanceState.getInt(KEY_ALTERNATE_ACTION);
             }
+            mDoneButtonTextResId = savedInstanceState.getInt(KEY_DONE_BUTTON_TEXT);
         }
     }
 
@@ -416,6 +418,7 @@ public class TimePickerDialog extends DialogFragment implements OnValueSelectedL
             if (mAlternateActionTextResId != null) {
                 outState.putInt(KEY_ALTERNATE_ACTION, mAlternateActionTextResId);
             }
+            outState.putInt(KEY_DONE_BUTTON_TEXT, mDoneButtonTextResId);
         }
     }
 
