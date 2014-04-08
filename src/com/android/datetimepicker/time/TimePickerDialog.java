@@ -57,6 +57,7 @@ public class TimePickerDialog extends DialogFragment implements OnValueSelectedL
     private static final String KEY_IN_KB_MODE = "in_kb_mode";
     private static final String KEY_TYPED_TIMES = "typed_times";
     private static final String KEY_DARK_THEME = "dark_theme";
+    private static final String KEY_ALTERNATE_ACTION = "alternate_action";
 
     public static final int HOUR_INDEX = 0;
     public static final int MINUTE_INDEX = 1;
@@ -191,6 +192,10 @@ public class TimePickerDialog extends DialogFragment implements OnValueSelectedL
             mIs24HourMode = savedInstanceState.getBoolean(KEY_IS_24_HOUR_VIEW);
             mInKbMode = savedInstanceState.getBoolean(KEY_IN_KB_MODE);
             mThemeDark = savedInstanceState.getBoolean(KEY_DARK_THEME);
+
+            if (savedInstanceState.containsKey(KEY_ALTERNATE_ACTION)) {
+                mAlternateActionTextResId = savedInstanceState.getInt(KEY_ALTERNATE_ACTION);
+            }
         }
     }
 
@@ -408,6 +413,9 @@ public class TimePickerDialog extends DialogFragment implements OnValueSelectedL
                 outState.putIntegerArrayList(KEY_TYPED_TIMES, mTypedTimes);
             }
             outState.putBoolean(KEY_DARK_THEME, mThemeDark);
+            if (mAlternateActionTextResId != null) {
+                outState.putInt(KEY_ALTERNATE_ACTION, mAlternateActionTextResId);
+            }
         }
     }
 

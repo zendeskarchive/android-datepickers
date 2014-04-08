@@ -67,6 +67,7 @@ public class DatePickerDialog extends DialogFragment implements
     private static final String KEY_YEAR_END = "year_end";
     private static final String KEY_CURRENT_VIEW = "current_view";
     private static final String KEY_LIST_POSITION_OFFSET = "list_position_offset";
+    private static final String KEY_ALTERNATE_ACTION = "alternate_action";
 
     private static final int DEFAULT_START_YEAR = 1900;
     private static final int DEFAULT_END_YEAR = 2100;
@@ -166,7 +167,7 @@ public class DatePickerDialog extends DialogFragment implements
         super.onCreate(savedInstanceState);
         final Activity activity = getActivity();
         activity.getWindow().setSoftInputMode(
-                WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+            WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         if (savedInstanceState != null) {
             mCalendar.set(Calendar.YEAR, savedInstanceState.getInt(KEY_SELECTED_YEAR));
             mCalendar.set(Calendar.MONTH, savedInstanceState.getInt(KEY_SELECTED_MONTH));
@@ -192,6 +193,9 @@ public class DatePickerDialog extends DialogFragment implements
             outState.putInt(KEY_LIST_POSITION_OFFSET, mYearPickerView.getFirstPositionOffset());
         }
         outState.putInt(KEY_LIST_POSITION, listPosition);
+        if (mAlternateActionTextResId != null) {
+            outState.putInt(KEY_ALTERNATE_ACTION, mAlternateActionTextResId);
+        }
     }
 
     @Override
@@ -220,6 +224,9 @@ public class DatePickerDialog extends DialogFragment implements
             currentView = savedInstanceState.getInt(KEY_CURRENT_VIEW);
             listPosition = savedInstanceState.getInt(KEY_LIST_POSITION);
             listPositionOffset = savedInstanceState.getInt(KEY_LIST_POSITION_OFFSET);
+            if (savedInstanceState.containsKey(KEY_ALTERNATE_ACTION)) {
+                mAlternateActionTextResId = savedInstanceState.getInt(KEY_ALTERNATE_ACTION);
+            }
         }
 
         final Activity activity = getActivity();
