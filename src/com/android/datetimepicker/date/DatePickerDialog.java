@@ -123,7 +123,7 @@ public class DatePickerDialog extends DialogFragment implements
          */
         void onDateSet(DatePickerDialog dialog, int year, int monthOfYear, int dayOfMonth);
 
-        void onNeutralButtonPressed();
+        void onNeutralButtonPressed(DatePickerDialog dialog, int year, int monthOfYear, int dayOfMonth);
     }
 
     /**
@@ -268,9 +268,8 @@ public class DatePickerDialog extends DialogFragment implements
               @Override
               public void onClick(View v) {
                 if (mCallBack != null) {
-                    mCallBack.onDateSet(DatePickerDialog.this, mCalendar.get(Calendar.YEAR),
+                    mCallBack.onNeutralButtonPressed(DatePickerDialog.this, mCalendar.get(Calendar.YEAR),
                                 mCalendar.get(Calendar.MONTH), mCalendar.get(Calendar.DAY_OF_MONTH));
-                    mCallBack.onNeutralButtonPressed();
                 }
                 dismiss();
               }

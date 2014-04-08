@@ -125,7 +125,7 @@ public class TimePickerDialog extends DialogFragment implements OnValueSelectedL
          */
         void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute);
 
-        void onNeutralButtonPressed();
+        void onNeutralButtonPressed(RadialPickerLayout view, int hourOfDay, int minute);
     }
 
     public TimePickerDialog() {
@@ -277,9 +277,8 @@ public class TimePickerDialog extends DialogFragment implements OnValueSelectedL
             @Override
             public void onClick(View v) {
                 if (mCallback != null) {
-                    mCallback.onTimeSet(mTimePicker,
+                    mCallback.onNeutralButtonPressed(mTimePicker,
                                 mTimePicker.getHours(), mTimePicker.getMinutes());
-                    mCallback.onNeutralButtonPressed();
                 }
                 dismiss();
               }
