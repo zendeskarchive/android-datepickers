@@ -17,12 +17,26 @@
     style="?android:attr/buttonBarStyle"
     android:layout_width="@dimen/date_picker_component_width"
     android:layout_height="wrap_content"
-    android:orientation="vertical" >
+    android:orientation="horizontal"
+    android:showDividers="middle"
+    android:divider="@drawable/button_bar_divider" >
+
+<Button
+        android:id="@+id/neutral_button"
+        android:visibility="gone"
+        style="?android:attr/buttonBarButtonStyle"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:textSize="@dimen/done_label_size"
+        android:textColor="@color/done_text_color"/>
 
     <Button
         android:id="@+id/done"
         style="?android:attr/buttonBarButtonStyle"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
+        android:layout_weight="1"
         android:layout_height="wrap_content"
         android:minHeight="48dp"
         android:text="@string/done_label"

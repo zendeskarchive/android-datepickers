@@ -107,6 +107,7 @@ public class DatePickerDialog extends DialogFragment implements
     private String mSelectDay;
     private String mYearPickerDescription;
     private String mSelectYear;
+    private Integer mNeutralButtonTextResId;
 
     /**
      * The callback used to indicate the user is done filling in the date.
@@ -121,6 +122,8 @@ public class DatePickerDialog extends DialogFragment implements
          * @param dayOfMonth The day of the month that was set.
          */
         void onDateSet(DatePickerDialog dialog, int year, int monthOfYear, int dayOfMonth);
+
+        void onNeutralButtonPressed();
     }
 
     /**
@@ -255,6 +258,25 @@ public class DatePickerDialog extends DialogFragment implements
             }
         });
 
+        if (mNeutralButtonTextResId != null) {
+            TextView neutralButton = (TextView) view.findViewById(R.id.neutral_button);
+
+            neutralButton.setText(mNeutralButtonTextResId);
+            neutralButton.setVisibility(View.VISIBLE);
+
+            neutralButton.setOnClickListener(new OnClickListener() {
+              @Override
+              public void onClick(View v) {
+                if (mCallBack != null) {
+                    mCallBack.onDateSet(DatePickerDialog.this, mCalendar.get(Calendar.YEAR),
+                                mCalendar.get(Calendar.MONTH), mCalendar.get(Calendar.DAY_OF_MONTH));
+                    mCallBack.onNeutralButtonPressed();
+                }
+                dismiss();
+              }
+            });
+        }
+
         updateDisplay(false);
         setCurrentView(currentView);
 
@@ -374,6 +396,10 @@ public class DatePickerDialog extends DialogFragment implements
         if (mDayPickerView != null) {
             mDayPickerView.onChange();
         }
+    }
+
+    public void setNeutralButton(int textResId) {
+      mNeutralButtonTextResId = textResId;
     }
 
     public void setOnDateSetListener(OnDateSetListener listener) {

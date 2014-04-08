@@ -110,6 +110,8 @@ public class TimePickerDialog extends DialogFragment implements OnValueSelectedL
     private String mMinutePickerDescription;
     private String mSelectMinutes;
 
+    private Integer mNeutralButtonTextResId;
+
     /**
      * The callback interface used to indicate the user is done filling in
      * the time (they clicked on the 'Set' button).
@@ -122,6 +124,8 @@ public class TimePickerDialog extends DialogFragment implements OnValueSelectedL
          * @param minute The minute that was set.
          */
         void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute);
+
+        void onNeutralButtonPressed();
     }
 
     public TimePickerDialog() {
@@ -165,6 +169,10 @@ public class TimePickerDialog extends DialogFragment implements OnValueSelectedL
         mInitialHourOfDay = hourOfDay;
         mInitialMinute = minute;
         mInKbMode = false;
+    }
+
+    public void setNeutralButton(int textResId) {
+      mNeutralButtonTextResId = textResId;
     }
 
     @Override
@@ -258,6 +266,25 @@ public class TimePickerDialog extends DialogFragment implements OnValueSelectedL
             }
         });
         mDoneButton.setOnKeyListener(keyboardListener);
+
+        if (mNeutralButtonTextResId != null) {
+            TextView neutralButton = (TextView) view.findViewById(R.id.neutral_button);
+
+            neutralButton.setText(mNeutralButtonTextResId);
+            neutralButton.setVisibility(View.VISIBLE);
+
+            neutralButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mCallback != null) {
+                    mCallback.onTimeSet(mTimePicker,
+                                mTimePicker.getHours(), mTimePicker.getMinutes());
+                    mCallback.onNeutralButtonPressed();
+                }
+                dismiss();
+              }
+            });
+        }
 
         // Enable or disable the AM/PM view.
         mAmPmHitspace = view.findViewById(R.id.ampm_hitspace);
