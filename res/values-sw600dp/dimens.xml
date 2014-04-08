@@ -44,7 +44,7 @@
     <dimen name="ampm_label_size">20sp</dimen>
     <dimen name="ampm_left_padding">8dip</dimen>
     <dimen name="separator_padding">5dip</dimen>
-    <dimen name="header_height">120dip</dimen>
+    <dimen name="time_picker_header_height">120dip</dimen>
     <dimen name="footer_height">60dip</dimen>
     <dimen name="minimum_margin_sides">48dip</dimen>
     <dimen name="minimum_margin_top_bottom">24dip</dimen>

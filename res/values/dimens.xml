@@ -35,7 +35,7 @@
     <dimen name="done_label_size">14sp</dimen>
     <dimen name="ampm_left_padding">6dip</dimen>
     <dimen name="separator_padding">4dip</dimen>
-    <dimen name="header_height">96dip</dimen>
+    <dimen name="time_picker_header_height">96dip</dimen>
     <dimen name="footer_height">48dip</dimen>
     <dimen name="minimum_margin_sides">48dip</dimen>
     <dimen name="minimum_margin_top_bottom">24dip</dimen>
