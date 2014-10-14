@@ -167,7 +167,7 @@ public abstract class MonthView extends View {
     protected int mSelectedRight = -1;
 
     private final Calendar mCalendar;
-    private final Calendar mDayLabelCalendar;
+    protected final Calendar mDayLabelCalendar;
     private final MonthViewTouchHelper mTouchHelper;
 
     private int mNumRows = DEFAULT_NUM_ROWS;
@@ -212,13 +212,17 @@ public abstract class MonthView extends View {
                 - MONTH_HEADER_SIZE) / MAX_NUM_ROWS;
 
         // Set up accessibility components.
-        mTouchHelper = new MonthViewTouchHelper(this);
+        mTouchHelper = getMonthViewTouchHelper();
         ViewCompat.setAccessibilityDelegate(this, mTouchHelper);
         ViewCompat.setImportantForAccessibility(this, ViewCompat.IMPORTANT_FOR_ACCESSIBILITY_YES);
         mLockAccessibilityDelegate = true;
 
         // Sets up any standard paints that will be used
         initView();
+    }
+
+    protected MonthViewTouchHelper getMonthViewTouchHelper() {
+        return new MonthViewTouchHelper(this);
     }
 
     @Override
@@ -372,6 +376,10 @@ public abstract class MonthView extends View {
         mTouchHelper.invalidateRoot();
     }
 
+    public void setSelectedDay(int day) {
+        mSelectedDay = day;
+    }
+
     public void reuse() {
         mNumRows = DEFAULT_NUM_ROWS;
         requestLayout();
@@ -404,6 +412,14 @@ public abstract class MonthView extends View {
         mTouchHelper.invalidateRoot();
     }
 
+    public int getMonth() {
+        return mMonth;
+    }
+
+    public int getYear() {
+        return mYear;
+    }
+
     private String getMonthAndYearString() {
         int flags = DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_SHOW_YEAR
                 | DateUtils.FORMAT_NO_MONTH_DAY;
@@ -413,13 +429,13 @@ public abstract class MonthView extends View {
                 Time.getCurrentTimezone()).toString();
     }
 
-    private void drawMonthTitle(Canvas canvas) {
+    protected void drawMonthTitle(Canvas canvas) {
         int x = (mWidth + 2 * mPadding) / 2;
         int y = (MONTH_HEADER_SIZE - MONTH_DAY_LABEL_TEXT_SIZE) / 2 + (MONTH_LABEL_TEXT_SIZE / 3);
         canvas.drawText(getMonthAndYearString(), x, y, mMonthTitlePaint);
     }
 
-    private void drawMonthDayLabels(Canvas canvas) {
+    protected void drawMonthDayLabels(Canvas canvas) {
         int y = MONTH_HEADER_SIZE - (MONTH_DAY_LABEL_TEXT_SIZE / 2);
         int dayWidthHalf = (mWidth - mPadding * 2) / (mNumDays * 2);
 
@@ -481,7 +497,7 @@ public abstract class MonthView extends View {
     public abstract void drawMonthDay(Canvas canvas, int year, int month, int day,
             int x, int y, int startX, int stopX, int startY, int stopY);
 
-    private int findDayOffset() {
+    protected int findDayOffset() {
         return (mDayOfWeekStart < mWeekStart ? (mDayOfWeekStart + mNumDays) : mDayOfWeekStart)
                 - mWeekStart;
     }
@@ -565,7 +581,7 @@ public abstract class MonthView extends View {
      * Provides a virtual view hierarchy for interfacing with an accessibility
      * service.
      */
-    private class MonthViewTouchHelper extends ExploreByTouchHelper {
+    protected class MonthViewTouchHelper extends ExploreByTouchHelper {
         private static final String DATE_FORMAT = "dd MMMM yyyy";
 
         private final Rect mTempRect = new Rect();
@@ -644,7 +660,7 @@ public abstract class MonthView extends View {
          * @param day The day to calculate bounds for
          * @param rect The rectangle in which to store the bounds
          */
-        private void getItemBounds(int day, Rect rect) {
+        protected void getItemBounds(int day, Rect rect) {
             final int offsetX = mPadding;
             final int offsetY = MONTH_HEADER_SIZE;
             final int cellHeight = mRowHeight;
@@ -666,7 +682,7 @@ public abstract class MonthView extends View {
          * @param day The day to generate a description for
          * @return A description of the time object
          */
-        private CharSequence getItemDescription(int day) {
+        protected CharSequence getItemDescription(int day) {
             mTempCalendar.set(mYear, mMonth, day);
             final CharSequence date = DateFormat.format(DATE_FORMAT,
                     mTempCalendar.getTimeInMillis());
