@@ -18,7 +18,6 @@ package com.android.datetimepicker.time;
 
 import android.animation.ObjectAnimator;
 import android.app.ActionBar.LayoutParams;
-import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -113,7 +112,7 @@ public class TimePickerDialog extends DialogFragment implements OnValueSelectedL
     private String mSelectMinutes;
 
     private Integer mAlternateActionTextResId;
-    private int mDoneButtonTextResId = R.string.done_label;
+    private int mDoneButtonTextResId = R.string.dtp_done_label;
 
   /**
      * The callback interface used to indicate the user is done filling in
@@ -206,17 +205,17 @@ public class TimePickerDialog extends DialogFragment implements OnValueSelectedL
             Bundle savedInstanceState) {
         getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
 
-        View view = inflater.inflate(R.layout.time_picker_dialog, null);
+        View view = inflater.inflate(R.layout.dtp_time_picker_dialog, null);
         KeyboardListener keyboardListener = new KeyboardListener();
         view.findViewById(R.id.time_picker_dialog).setOnKeyListener(keyboardListener);
 
         Resources res = getResources();
-        mHourPickerDescription = res.getString(R.string.hour_picker_description);
-        mSelectHours = res.getString(R.string.select_hours);
-        mMinutePickerDescription = res.getString(R.string.minute_picker_description);
-        mSelectMinutes = res.getString(R.string.select_minutes);
-        mSelectedColor = res.getColor(mThemeDark? R.color.red : R.color.blue);
-        mUnselectedColor = res.getColor(mThemeDark? R.color.white : R.color.numbers_text_color);
+        mHourPickerDescription = res.getString(R.string.dtp_hour_picker_description);
+        mSelectHours = res.getString(R.string.dtp_select_hours);
+        mMinutePickerDescription = res.getString(R.string.dtp_minute_picker_description);
+        mSelectMinutes = res.getString(R.string.dtp_select_minutes);
+        mSelectedColor = res.getColor(mThemeDark? R.color.dtp_red : R.color.dtp_blue);
+        mUnselectedColor = res.getColor(mThemeDark? R.color.dtp_white : R.color.dtp_numbers_text_color);
 
         mHourView = (TextView) view.findViewById(R.id.hours);
         mHourView.setOnKeyListener(keyboardListener);
@@ -332,8 +331,8 @@ public class TimePickerDialog extends DialogFragment implements OnValueSelectedL
         setMinute(mInitialMinute);
 
         // Set up for keyboard mode.
-        mDoublePlaceholderText = res.getString(R.string.time_placeholder);
-        mDeletedKeyFormat = res.getString(R.string.deleted_key);
+        mDoublePlaceholderText = res.getString(R.string.dtp_time_placeholder);
+        mDeletedKeyFormat = res.getString(R.string.dtp_deleted_key);
         mPlaceholderText = mDoublePlaceholderText.charAt(0);
         mAmKeyCode = mPmKeyCode = -1;
         generateLegalTimesTree();
@@ -348,18 +347,18 @@ public class TimePickerDialog extends DialogFragment implements OnValueSelectedL
         // Set the theme at the end so that the initialize()s above don't counteract the theme.
         mTimePicker.setTheme(getActivity().getApplicationContext(), mThemeDark);
         // Prepare some colors to use.
-        int white = res.getColor(R.color.white);
-        int circleBackground = res.getColor(R.color.circle_background);
-        int line = res.getColor(R.color.line_background);
-        int timeDisplay = res.getColor(R.color.numbers_text_color);
-        ColorStateList doneTextColor = res.getColorStateList(R.color.done_text_color);
-        int doneBackground = R.drawable.done_background_color;
+        int white = res.getColor(R.color.dtp_white);
+        int circleBackground = res.getColor(R.color.dtp_circle_background);
+        int line = res.getColor(R.color.dtp_line_background);
+        int timeDisplay = res.getColor(R.color.dtp_numbers_text_color);
+        ColorStateList doneTextColor = res.getColorStateList(R.color.dtp_done_text_color);
+        int doneBackground = R.drawable.dtp_done_background_color;
 
-        int darkGray = res.getColor(R.color.dark_gray);
-        int lightGray = res.getColor(R.color.light_gray);
-        int darkLine = res.getColor(R.color.line_dark);
-        ColorStateList darkDoneTextColor = res.getColorStateList(R.color.done_text_color_dark);
-        int darkDoneBackground = R.drawable.done_background_color_dark;
+        int darkGray = res.getColor(R.color.dtp_dark_gray);
+        int lightGray = res.getColor(R.color.dtp_light_gray);
+        int darkLine = res.getColor(R.color.dtp_line_dark);
+        ColorStateList darkDoneTextColor = res.getColorStateList(R.color.dtp_done_text_color_dark);
+        int darkDoneBackground = R.drawable.dtp_done_background_color_dark;
 
         // Set the colors for each view based on the theme.
         view.findViewById(R.id.time_display_background).setBackgroundColor(mThemeDark? darkGray : white);

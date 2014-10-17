@@ -2,6 +2,6 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
 
     <size android:width="1dip" />
-    <solid android:color="@color/line_background" />
+    <solid android:color="@color/dtp_line_background" />
 
 </shape>

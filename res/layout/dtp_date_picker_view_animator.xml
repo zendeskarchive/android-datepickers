@@ -13,13 +13,10 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_focused="true"
-          android:state_pressed="false"
-          android:drawable="@color/blue_focused" />
-
-    <item android:state_pressed="true"
-          android:drawable="@color/neutral_pressed" />
-
-    <item android:drawable="@color/white" />
-</selector>
+<com.android.datetimepicker.date.AccessibleDateAnimator
+     xmlns:android="http://schemas.android.com/apk/res/android"
+     android:id="@+id/animator"
+     android:layout_width="@dimen/dtp_date_picker_component_width"
+     android:layout_height="@dimen/dtp_date_picker_view_animator_height"
+     android:gravity="center"
+     android:background="@color/dtp_date_picker_view_animator" />

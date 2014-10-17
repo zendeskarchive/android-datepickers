@@ -110,7 +110,7 @@ public class DatePickerDialog extends DialogFragment implements
     private String mYearPickerDescription;
     private String mSelectYear;
     private Integer mAlternateActionTextResId;
-    private int mDoneButtonTextResId = R.string.done_label;
+    private int mDoneButtonTextResId = R.string.dtp_done_label;
 
     /**
      * The callback used to indicate the user is done filling in the date.
@@ -206,7 +206,7 @@ public class DatePickerDialog extends DialogFragment implements
         Log.d(TAG, "onCreateView: ");
         getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
 
-        View view = inflater.inflate(R.layout.date_picker_dialog, null);
+        View view = inflater.inflate(R.layout.dtp_date_picker_dialog, null);
 
         mDayOfWeekView = (TextView) view.findViewById(R.id.date_picker_header);
         mMonthAndDayView = (LinearLayout) view.findViewById(R.id.date_picker_month_and_day);
@@ -237,10 +237,10 @@ public class DatePickerDialog extends DialogFragment implements
         mYearPickerView = new YearPickerView(activity, this);
 
         Resources res = getResources();
-        mDayPickerDescription = res.getString(R.string.day_picker_description);
-        mSelectDay = res.getString(R.string.select_day);
-        mYearPickerDescription = res.getString(R.string.year_picker_description);
-        mSelectYear = res.getString(R.string.select_year);
+        mDayPickerDescription = res.getString(R.string.dtp_day_picker_description);
+        mSelectDay = res.getString(R.string.dtp_select_day);
+        mYearPickerDescription = res.getString(R.string.dtp_year_picker_description);
+        mSelectYear = res.getString(R.string.dtp_select_year);
 
         mAnimator = (AccessibleDateAnimator) view.findViewById(R.id.animator);
         mAnimator.addView(mDayPickerView);

@@ -15,11 +15,11 @@
 -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="?android:attr/buttonBarStyle"
-    android:layout_width="@dimen/date_picker_component_width"
+    android:layout_width="@dimen/dtp_date_picker_component_width"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:showDividers="middle"
-    android:divider="@drawable/button_bar_divider" >
+    android:divider="@drawable/dtp_button_bar_divider" >
 
 <Button
         android:id="@+id/alternate_action_button"
@@ -29,8 +29,8 @@
         android:layout_weight="1"
         android:layout_height="wrap_content"
         android:minHeight="48dp"
-        android:textSize="@dimen/done_label_size"
-        android:textColor="@color/done_text_color"/>
+        android:textSize="@dimen/dtp_done_label_size"
+        android:textColor="@color/dtp_done_text_color"/>
 
     <Button
         android:id="@+id/done"
@@ -39,7 +39,7 @@
         android:layout_weight="1"
         android:layout_height="wrap_content"
         android:minHeight="48dp"
-        android:text="@string/done_label"
-        android:textSize="@dimen/done_label_size"
-        android:textColor="@color/done_text_color" />
+        android:text="@string/dtp_done_label"
+        android:textSize="@dimen/dtp_done_label_size"
+        android:textColor="@color/dtp_done_text_color" />
 </LinearLayout>

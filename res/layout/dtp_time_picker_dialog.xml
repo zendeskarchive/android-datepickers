@@ -24,51 +24,51 @@
         android:id="@+id/time_display_background"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white" >
+        android:background="@color/dtp_white" >
         <include
-            layout="@layout/time_header_label"
+            layout="@layout/dtp_time_header_label"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/time_picker_header_height"
+            android:layout_height="@dimen/dtp_time_picker_header_height"
             android:layout_gravity="center" />
     </FrameLayout>
     <com.android.datetimepicker.time.RadialPickerLayout
         android:id="@+id/time_picker"
-        android:layout_height="@dimen/picker_dimen"
+        android:layout_height="@dimen/dtp_picker_dimen"
         android:layout_width="wrap_content"
         android:layout_gravity="center"
-        android:background="@color/circle_background"
+        android:background="@color/dtp_circle_background"
         android:focusable="true"
         android:focusableInTouchMode="true" />
     <View
         android:id="@+id/line"
         android:layout_width="match_parent"
         android:layout_height="1dip"
-        android:background="@color/line_background" />
+        android:background="@color/dtp_line_background" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:showDividers="middle"
-        android:divider="@drawable/button_bar_divider">
+        android:divider="@drawable/dtp_button_bar_divider">
         <Button
             android:id="@+id/alternate_action_button"
             android:visibility="gone"
-            android:background="@drawable/done_background_color"
+            android:background="@drawable/dtp_done_background_color"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:minHeight="48dp"
-            android:textSize="@dimen/done_label_size"
-            android:textColor="@color/done_text_color"/>
+            android:textSize="@dimen/dtp_done_label_size"
+            android:textColor="@color/dtp_done_text_color"/>
         <Button
             android:id="@+id/done_button"
-            android:background="@drawable/done_background_color"
+            android:background="@drawable/dtp_done_background_color"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:minHeight="48dp"
-            android:text="@string/done_label"
-            android:textSize="@dimen/done_label_size"
-            android:textColor="@color/done_text_color"/>
+            android:text="@string/dtp_done_label"
+            android:textSize="@dimen/dtp_done_label_size"
+            android:textColor="@color/dtp_done_text_color"/>
     </LinearLayout>
 </LinearLayout>

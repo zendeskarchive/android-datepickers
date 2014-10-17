@@ -48,8 +48,8 @@ public class CircleView extends View {
         super(context);
 
         Resources res = context.getResources();
-        mCircleColor = res.getColor(R.color.white);
-        mDotColor = res.getColor(R.color.numbers_text_color);
+        mCircleColor = res.getColor(R.color.dtp_white);
+        mDotColor = res.getColor(R.color.dtp_numbers_text_color);
         mPaint.setAntiAlias(true);
 
         mIsInitialized = false;
@@ -65,12 +65,12 @@ public class CircleView extends View {
         mIs24HourMode = is24HourMode;
         if (is24HourMode) {
             mCircleRadiusMultiplier = Float.parseFloat(
-                    res.getString(R.string.circle_radius_multiplier_24HourMode));
+                    res.getString(R.string.dtp_circle_radius_multiplier_24HourMode));
         } else {
             mCircleRadiusMultiplier = Float.parseFloat(
-                    res.getString(R.string.circle_radius_multiplier));
+                    res.getString(R.string.dtp_circle_radius_multiplier));
             mAmPmCircleRadiusMultiplier =
-                    Float.parseFloat(res.getString(R.string.ampm_circle_radius_multiplier));
+                    Float.parseFloat(res.getString(R.string.dtp_ampm_circle_radius_multiplier));
         }
 
         mIsInitialized = true;
@@ -79,11 +79,11 @@ public class CircleView extends View {
     /* package */ void setTheme(Context context, boolean dark) {
         Resources res = context.getResources();
         if (dark) {
-            mCircleColor = res.getColor(R.color.dark_gray);
-            mDotColor = res.getColor(R.color.light_gray);
+            mCircleColor = res.getColor(R.color.dtp_dark_gray);
+            mDotColor = res.getColor(R.color.dtp_light_gray);
         } else {
-            mCircleColor = res.getColor(R.color.white);
-            mDotColor = res.getColor(R.color.numbers_text_color);
+            mCircleColor = res.getColor(R.color.dtp_white);
+            mDotColor = res.getColor(R.color.dtp_numbers_text_color);
         }
     }
 

@@ -190,25 +190,25 @@ public abstract class MonthView extends View {
         mDayLabelCalendar = Calendar.getInstance();
         mCalendar = Calendar.getInstance();
 
-        mDayOfWeekTypeface = res.getString(R.string.day_of_week_label_typeface);
-        mMonthTitleTypeface = res.getString(R.string.sans_serif);
+        mDayOfWeekTypeface = res.getString(R.string.dtp_day_of_week_label_typeface);
+        mMonthTitleTypeface = res.getString(R.string.dtp_sans_serif);
 
-        mDayTextColor = res.getColor(R.color.date_picker_text_normal);
-        mTodayNumberColor = res.getColor(R.color.blue);
-        mMonthTitleColor = res.getColor(R.color.white);
-        mMonthTitleBGColor = res.getColor(R.color.circle_background);
+        mDayTextColor = res.getColor(R.color.dtp_date_picker_text_normal);
+        mTodayNumberColor = res.getColor(R.color.dtp_blue);
+        mMonthTitleColor = res.getColor(R.color.dtp_white);
+        mMonthTitleBGColor = res.getColor(R.color.dtp_circle_background);
 
         mStringBuilder = new StringBuilder(50);
         mFormatter = new Formatter(mStringBuilder, Locale.getDefault());
 
-        MINI_DAY_NUMBER_TEXT_SIZE = res.getDimensionPixelSize(R.dimen.day_number_size);
-        MONTH_LABEL_TEXT_SIZE = res.getDimensionPixelSize(R.dimen.month_label_size);
-        MONTH_DAY_LABEL_TEXT_SIZE = res.getDimensionPixelSize(R.dimen.month_day_label_text_size);
-        MONTH_HEADER_SIZE = res.getDimensionPixelOffset(R.dimen.month_list_item_header_height);
+        MINI_DAY_NUMBER_TEXT_SIZE = res.getDimensionPixelSize(R.dimen.dtp_day_number_size);
+        MONTH_LABEL_TEXT_SIZE = res.getDimensionPixelSize(R.dimen.dtp_month_label_size);
+        MONTH_DAY_LABEL_TEXT_SIZE = res.getDimensionPixelSize(R.dimen.dtp_month_day_label_text_size);
+        MONTH_HEADER_SIZE = res.getDimensionPixelOffset(R.dimen.dtp_month_list_item_header_height);
         DAY_SELECTED_CIRCLE_SIZE = res
-                .getDimensionPixelSize(R.dimen.day_number_select_circle_radius);
+                .getDimensionPixelSize(R.dimen.dtp_day_number_select_circle_radius);
 
-        mRowHeight = (res.getDimensionPixelOffset(R.dimen.date_picker_view_animator_height)
+        mRowHeight = (res.getDimensionPixelOffset(R.dimen.dtp_date_picker_view_animator_height)
                 - MONTH_HEADER_SIZE) / MAX_NUM_ROWS;
 
         // Set up accessibility components.
@@ -688,7 +688,7 @@ public abstract class MonthView extends View {
                     mTempCalendar.getTimeInMillis());
 
             if (day == mSelectedDay) {
-                return getContext().getString(R.string.item_is_selected, date);
+                return getContext().getString(R.string.dtp_item_is_selected, date);
             }
 
             return date;
