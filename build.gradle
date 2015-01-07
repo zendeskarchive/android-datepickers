@@ -1,7 +1,7 @@
 apply plugin: 'android-library'
 
 dependencies {
-    compile project(':android-support-v4')
+    compile 'com.android.support:support-v4:21.0.0-getbase'
 }
 
 android {
@@ -25,3 +25,5 @@ android {
     }
   }
 }
+
+apply from: '../gradle-mvn-publish.gradle'
